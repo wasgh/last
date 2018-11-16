@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="434.0" style="-fx-background-color: D5D5D5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProfilePage.ProfilepageController">
+    <stylesheets>
+        <URL value="@/styles/styles.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane prefHeight="507.0" prefWidth="434.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="507.0" prefWidth="434.0" spacing="9.0" styleClass="card">
+               <children>
+                  <Label style="-fx-background-color: 8A60D3;" styleClass="black-label" stylesheets="@../styles/styles.css" text="Personal Info" textAlignment="CENTER" />
+                  <Separator prefWidth="200.0" />
+                  <HBox alignment="CENTER" prefHeight="110.0" prefWidth="430.0">
+                     <children>
+                        <ImageView fitHeight="106.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/userprofile.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Username" />
+                        <Label fx:id="labelprofileUsername" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                     </children>
+                     <padding>
+                        <Insets left="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Name" />
+                        <Label fx:id="labelprofileName" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                     </children>
+                     <padding>
+                        <Insets left="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Rank" />
+                        <Label fx:id="labelprofileRank" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                     </children>
+                     <padding>
+                        <Insets left="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Skill" />
+                        <Label fx:id="labelprofileSkill" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                     </children>
+                     <padding>
+                        <Insets left="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Email" />
+                        <Label fx:id="labelprofileEmail" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                     </children>
+                     <padding>
+                        <Insets left="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Phone No." />
+                        <Label fx:id="labelprofilePhonenumber" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                     </children>
+                     <padding>
+                        <Insets left="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Birthdate" />
+                        <Label fx:id="labelprofileBirthdate" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                     </children>
+                     <padding>
+                        <Insets left="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Button fx:id="btnprofileHomePage" ellipsisString="" layoutX="134.0" layoutY="503.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" style="-fx-border-color: black;" styleClass="blue-btn" stylesheets="@../styles/styles.css" text="Home Page" />
+   </children>
+</AnchorPane>

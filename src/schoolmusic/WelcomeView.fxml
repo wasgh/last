@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="schoolmusic.WelcomeController">
+         <children>
+      <Accordion layoutX="168.0" layoutY="86.0" prefHeight="436.0" prefWidth="699.0">
+         <panes>
+            <TitledPane animated="false" prefHeight="380.0" prefWidth="691.0" stylesheets="@../styles/styles.css" text="Announcements">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="629.0">
+                     <children>
+                        <TextField alignment="TOP_LEFT" layoutX="-2.0" prefHeight="354.0" prefWidth="697.0" style="-fx-background-color: yellow; -fx-font-style: bald; -fx-font-size: 30;" text="safaewf" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" stylesheets="@../styles/styles.css" text="Events &amp; Festivals">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" prefHeight="382.0" prefWidth="677.0" text="Instruments for sale">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+         </panes>
+      </Accordion>
+         </children>
+      </AnchorPane>
