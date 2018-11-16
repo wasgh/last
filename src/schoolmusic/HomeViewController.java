@@ -71,13 +71,10 @@ public class HomeViewController implements Initializable {
         });
         try {
             VBox sidePane = FXMLLoader.load(getClass().getResource("/schoolmusic/Drawer.fxml"));
-            
+            AnchorPane login = FXMLLoader.load(getClass().getResource(Routes.LOGINVIEW));
             AnchorPane ManageUsers=FXMLLoader.load(getClass().getResource(Routes.MANAGEUSERS));
             AnchorPane Profileview=FXMLLoader.load(getClass().getResource(Routes.PROFILEVIEW));
-
-          
-            AnchorPane login = FXMLLoader.load(getClass().getResource(Routes.LOGINVIEW));
-         
+            AnchorPane contactus = FXMLLoader.load(getClass().getResource(Routes.CONTACTUS));
             AnchorPane appointment = FXMLLoader.load(getClass().getResource(Routes.APPOINTMENTSVIEW));
             AnchorPane welcome = FXMLLoader.load(getClass().getResource(Routes.WELCOMEVIEW));
             setNode(welcome);
@@ -91,10 +88,14 @@ public class HomeViewController implements Initializable {
                                 drawer.close();
                                 setNode(welcome);
                                 break;
-                                
+                            
                             case "profileMenu":
                                 drawer.close();
                                 setNode(Profileview);
+                                break;
+                            case "contactusMenu":
+                                drawer.close();
+                                setNode(contactus);
                                 break;
                                 
                                 case "manageusersMenu":
