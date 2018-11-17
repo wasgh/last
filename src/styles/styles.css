@@ -193,6 +193,15 @@
     -fx-font-size:12px;
     -fx-padding: 0 0 0 2;
 }
+.grey-label{
+    -fx-text-fill: white;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4px;
+    -fx-background-color:  AAAAAA;
+    -fx-font-weight:bold;
+    -fx-font-size:12px;
+    -fx-padding: 0 0 0 2;
+}
 .black-label{
     -fx-text-fill: white;
     -fx-border-radius: 4;

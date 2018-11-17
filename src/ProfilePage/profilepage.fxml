@@ -35,7 +35,7 @@
                   <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
                      <children>
                         <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Username" />
-                        <Label fx:id="labelprofileUsername" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                        <Label fx:id="labelprofileUsername" prefHeight="35.0" prefWidth="306.0" styleClass="grey-label" stylesheets="@../styles/styles.css" />
                      </children>
                      <padding>
                         <Insets left="5.0" top="5.0" />
@@ -44,7 +44,7 @@
                   <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
                      <children>
                         <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Name" />
-                        <Label fx:id="labelprofileName" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                        <Label fx:id="labelprofileName" prefHeight="35.0" prefWidth="306.0" styleClass="grey-label" stylesheets="@../styles/styles.css" />
                      </children>
                      <padding>
                         <Insets left="5.0" top="5.0" />
@@ -53,7 +53,7 @@
                   <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
                      <children>
                         <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Rank" />
-                        <Label fx:id="labelprofileRank" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                        <Label fx:id="labelprofileRank" prefHeight="35.0" prefWidth="306.0" styleClass="grey-label" stylesheets="@../styles/styles.css" />
                      </children>
                      <padding>
                         <Insets left="5.0" top="5.0" />
@@ -62,7 +62,7 @@
                   <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
                      <children>
                         <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Skill" />
-                        <Label fx:id="labelprofileSkill" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                        <Label fx:id="labelprofileSkill" prefHeight="35.0" prefWidth="306.0" styleClass="grey-label" stylesheets="@../styles/styles.css" />
                      </children>
                      <padding>
                         <Insets left="5.0" top="5.0" />
@@ -71,7 +71,7 @@
                   <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
                      <children>
                         <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Email" />
-                        <Label fx:id="labelprofileEmail" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                        <Label fx:id="labelprofileEmail" prefHeight="35.0" prefWidth="306.0" styleClass="grey-label" stylesheets="@../styles/styles.css" />
                      </children>
                      <padding>
                         <Insets left="5.0" top="5.0" />
@@ -80,7 +80,7 @@
                   <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
                      <children>
                         <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Phone No." />
-                        <Label fx:id="labelprofilePhonenumber" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                        <Label fx:id="labelprofilePhonenumber" prefHeight="35.0" prefWidth="306.0" styleClass="grey-label" stylesheets="@../styles/styles.css" />
                      </children>
                      <padding>
                         <Insets left="5.0" top="5.0" />
@@ -88,8 +88,8 @@
                   </HBox>
                   <HBox prefHeight="37.0" prefWidth="430.0" spacing="1.0">
                      <children>
-                        <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Birthdate" />
-                        <Label fx:id="labelprofileBirthdate" prefHeight="35.0" prefWidth="306.0" styleClass="black-label" stylesheets="@../styles/styles.css" />
+                        <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="Age" />
+                        <Label prefHeight="35.0" prefWidth="306.0" styleClass="grey-label" stylesheets="@../styles/styles.css" />
                      </children>
                      <padding>
                         <Insets left="5.0" top="5.0" />
@@ -99,6 +99,6 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Button fx:id="btnprofileHomePage" ellipsisString="" layoutX="134.0" layoutY="503.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" style="-fx-border-color: black;" styleClass="blue-btn" stylesheets="@../styles/styles.css" text="Home Page" />
+      <Button fx:id="btnprofileHomePage" ellipsisString="" layoutX="134.0" layoutY="503.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" styleClass="blue-btn" stylesheets="@../styles/styles.css" text="Home Page" />
    </children>
 </AnchorPane>
