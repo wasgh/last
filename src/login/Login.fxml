@@ -7,6 +7,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -59,5 +60,10 @@
          </image>
       </ImageView>
       <JFXButton fx:id="btnQuickAccessTools" alignment="CENTER" layoutX="255.0" layoutY="213.0" onAction="#QuickAccessAction" prefHeight="37.0" prefWidth="168.0" styleClass="blue-btn" stylesheets="@../styles/styles.css" text="Quick Access Tools" />
+        <Label fx:id="invalid_label" alignment="CENTER" contentDisplay="CENTER" layoutX="211.0" layoutY="579.0" prefHeight="28.0" prefWidth="256.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label> 
    </children>
 </AnchorPane>

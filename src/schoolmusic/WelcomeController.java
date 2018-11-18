@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import models.User;
 
 /**
@@ -20,6 +21,15 @@ import models.User;
  * @author danml
  */
 public class WelcomeController implements Initializable {
+    @FXML
+        private TitledPane instrumentsForSaleTitledPane;
+
+  @FXML
+        private TitledPane eventsFestivalsTitledPane;
+
+  @FXML
+        private TitledPane announcementsTitledPane;
+
 
     @FXML
     private JFXButton btnLogOut;

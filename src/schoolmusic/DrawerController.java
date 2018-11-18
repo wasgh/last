@@ -7,7 +7,6 @@ package schoolmusic;
 import javafx.scene.media.*;
 import javafx.application.Application;
 import com.jfoenix.controls.JFXButton;
-import com.sun.java.swing.plaf.windows.resources.windows;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
