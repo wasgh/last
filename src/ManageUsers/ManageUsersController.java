@@ -17,14 +17,19 @@ import com.jfoenix.controls.JFXTextField;
 import database.TableUsername;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 /**
  * FXML Controller class
  *
  * @author ai-19
  */
 public class ManageUsersController implements Initializable {
-    
+         public   String persistenceUnitName="schoolMusicFxPU";
+
     @FXML
     private JFXTextField tfauFirstName;
 
@@ -87,6 +92,10 @@ public class ManageUsersController implements Initializable {
 
     @FXML
     private TableView<?> tvMainTable;
+@FXML
+private TableColumn<TableUsername, String> nameCol;
+@FXML
+private TableColumn<TableUsername, String> emailCol;
 
     @FXML
     private JFXTextField tfeuUserName;
@@ -128,8 +137,10 @@ public class ManageUsersController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    System.out.println(this.getClass().getSimpleName() + ".initialize"); 
         TableUsername user= new TableUsername(); 
+        EntityManager em = Persistence.createEntityManagerFactory(persistenceUnitName).createEntityManager();
+        Query qry = em.createNamedQuery("TableUsername.findAll"); 
         
     }    
     

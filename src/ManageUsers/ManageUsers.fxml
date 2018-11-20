@@ -148,13 +148,13 @@
                                     </HBox>
                                     <TableView fx:id="tvMainTable" layoutX="11.0" layoutY="53.0" prefHeight="342.0" prefWidth="1094.0">
                                       <columns>
-                                        <TableColumn editable="false" prefWidth="209.0" text="Name" />
-                                          <TableColumn editable="false" prefWidth="128.0" text="Username" />
-                                          <TableColumn prefWidth="173.0" text="Email" />
-                                          <TableColumn editable="false" prefWidth="167.0" text="Rank" />
-                                          <TableColumn editable="false" minWidth="0.0" prefWidth="112.0" text="Skill" />
-                                          <TableColumn prefWidth="143.0" text="Phone Number" />
-                                          <TableColumn prefWidth="155.0" text="Date Added" />
+                                        <TableColumn fx:id="nameCol" editable="false" prefWidth="209.0" text="Name" />
+                                          <TableColumn fx:id="usernameCol" editable="false" prefWidth="128.0" text="Username" />
+                                          <TableColumn fx:id="emailCol" prefWidth="173.0" text="Email" />
+                                          <TableColumn fx:id="rankCol" editable="false" prefWidth="167.0" text="Rank" />
+                                          <TableColumn fx:id="skillCol" editable="false" minWidth="0.0" prefWidth="112.0" text="Skill" />
+                                          <TableColumn fx:id="phoneNumberCol" prefWidth="143.0" text="Phone Number" />
+                                          <TableColumn fx:id="dataAddedCol" prefWidth="155.0" text="Date Added" />
                                       </columns>
                                     </TableView>
                                  </children>
