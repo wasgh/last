@@ -30,8 +30,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TableUsername.findByUsername", query = "SELECT t FROM TableUsername t WHERE t.username = :username")
     , @NamedQuery(name = "TableUsername.findByPassword", query = "SELECT t FROM TableUsername t WHERE t.password = :password")
     , @NamedQuery(name = "TableUsername.findByTypeUsername", query = "SELECT t FROM TableUsername t WHERE t.typeUsername = :typeUsername")
-    , @NamedQuery(name = "TableUsername.findByTypeUsernameDependingUsernamePassword", query = "SELECT t.typeUsername FROM TableUsername t WHERE  t.username = :username AND t.password = :password")})
-
+    , @NamedQuery(name = "TableUsername.findBySex", query = "SELECT t FROM TableUsername t WHERE t.sex = :sex")
+    , @NamedQuery(name = "TableUsername.findByAdditionalInfo", query = "SELECT t FROM TableUsername t WHERE t.additionalInfo = :additionalInfo")
+    , @NamedQuery(name = "TableUsername.findByEmailAddress", query = "SELECT t FROM TableUsername t WHERE t.emailAddress = :emailAddress")
+    , @NamedQuery(name = "TableUsername.findByPhoneNumber", query = "SELECT t FROM TableUsername t WHERE t.phoneNumber = :phoneNumber")})
 public class TableUsername implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,6 +50,15 @@ public class TableUsername implements Serializable {
     @Basic(optional = false)
     @Column(name = "TYPE_USERNAME")
     private String typeUsername;
+    @Basic(optional = false)
+    @Column(name = "SEX")
+    private String sex;
+    @Column(name = "ADDITIONAL_INFO")
+    private String additionalInfo;
+    @Column(name = "EMAIL_ADDRESS")
+    private String emailAddress;
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "tableUsername")
     private TableStudent tableStudent;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "tableUsername")
@@ -60,11 +71,12 @@ public class TableUsername implements Serializable {
         this.usernameId = usernameId;
     }
 
-    public TableUsername(String usernameId, String username, String password, String typeUsername) {
+    public TableUsername(String usernameId, String username, String password, String typeUsername, String sex) {
         this.usernameId = usernameId;
         this.username = username;
         this.password = password;
         this.typeUsername = typeUsername;
+        this.sex = sex;
     }
 
     public String getUsernameId() {
@@ -97,6 +109,38 @@ public class TableUsername implements Serializable {
 
     public void setTypeUsername(String typeUsername) {
         this.typeUsername = typeUsername;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getAdditionalInfo() {
+        return additionalInfo;
+    }
+
+    public void setAdditionalInfo(String additionalInfo) {
+        this.additionalInfo = additionalInfo;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public TableStudent getTableStudent() {
