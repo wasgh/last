@@ -14,7 +14,6 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import database.TableUsername;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -92,10 +91,6 @@ public class ManageUsersController implements Initializable {
 
     @FXML
     private TableView<?> tvMainTable;
-@FXML
-private TableColumn<TableUsername, String> nameCol;
-@FXML
-private TableColumn<TableUsername, String> emailCol;
 
     @FXML
     private JFXTextField tfeuUserName;
@@ -126,6 +121,12 @@ private TableColumn<TableUsername, String> emailCol;
 
     @FXML
     private JFXComboBox<?> cbeuSkill;
+    
+    @FXML
+    private JFXComboBox<?> cbeuLevel;
+    
+    @FXML
+    private JFXComboBox<?> cbauLevel;
 
     @FXML
     private JFXButton btneuSaveChanges;
@@ -137,11 +138,6 @@ private TableColumn<TableUsername, String> emailCol;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    System.out.println(this.getClass().getSimpleName() + ".initialize"); 
-        TableUsername user= new TableUsername(); 
-        EntityManager em = Persistence.createEntityManagerFactory(persistenceUnitName).createEntityManager();
-        Query qry = em.createNamedQuery("TableUsername.findAll"); 
-        
     }    
     
 }

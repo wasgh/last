@@ -15,7 +15,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
-import database.TableUsername;
 import helpers.Routes;
 import java.io.IOException;
 import java.net.URL;
@@ -123,12 +122,12 @@ public class LoginController implements Initializable {
                 stage.initStyle(StageStyle.UNDECORATED);
                 stage.setScene(scene);
                 
-                if (isValidCredentials())
-                {    
-                    TableUsername tableUsername = new TableUsername ();
-                 //    HomeViewController homeViewController =  (HomeViewController)loader.getController();
-                       HomeViewController homeViewController =  (HomeViewController)loader.getController();
-                     homeViewController.GetData(txtUsername.getText(), txtPassword.getText());
+                if (isValidInput())
+                { completeLogin();
+/*                *///    TableUsername tableUsername = new TableUsername ();
+                 //   // HomeViewController homeViewController =  (HomeViewController)loader.getController();
+                 //      HomeViewController homeViewController =  (HomeViewController)loader.getController();
+                   //  homeViewController.GetData(txtUsername.getText(), txtPassword.getText());
                   //   tableUsername.setUsername(txtUsername.getText().toString());
                  //    tableUsername.setPassword(txtPassword.getText().toString());
                   //   homeViewController.initData(tableUsername);
@@ -230,7 +229,7 @@ public class LoginController implements Initializable {
 
         }
     }
-    private boolean isValidCredentials()
+   /* private boolean isValidCredentials()
     {
         boolean let_in = false;
         System.out.println( "SELECT * FROM TABLE_USERNAME WHERE USERNAME= " + "'" + txtUsername.getText() + "'" 
@@ -271,5 +270,5 @@ public class LoginController implements Initializable {
             return let_in;
         
     }
-
+*/
 }

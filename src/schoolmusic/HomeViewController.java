@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXPopup;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-import database.TableUsername;
 import helpers.Routes;
 import java.io.IOException;
 import java.net.URL;
@@ -106,14 +105,14 @@ EntityManagerFactory emf ;
        // setStringUsername(stringUsername);
        // Drawer =  GetTypeUserName(stringUsername,stringPassword);
         
-         emf = Persistence.createEntityManagerFactory("schoolMusicFxPU");
+/*         emf = Persistence.createEntityManagerFactory("schoolMusicFxPU");
               em= emf.createEntityManager();
             Query q =em.createQuery("SELECT t.typeUsername FROM TableUsername t WHERE  t.username = :username AND t.password = :password",String.class);
           q.setParameter("username",stringUsername);
                    q.setParameter("password", stringPassword);
 
            Drawer=  q.getSingleResult().toString();
-                    txtCurrentWindow.setText(stringUsername+stringPassword+Drawer);
+                    txtCurrentWindow.setText(stringUsername+stringPassword+Drawer);*/
    try {
          //   System.out.println("TypeUserName : "+GetTypeUserName(stringUsername,stringPassword));
             // Drawer = "DrawerStudent";

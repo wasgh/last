@@ -26,20 +26,18 @@ import javafx.stage.Stage;
  */
 public class DrawerController implements Initializable {
 
-        @FXML
+    @FXML
     private JFXButton homeBtn;
 
     @FXML
     private JFXButton myprofileBtn;
 
+
     @FXML
-    private JFXButton contactusBtn;
+    private JFXButton editcontactBtn;
 
     @FXML
     private JFXButton manageusersBtn;
-
-    @FXML
-    private JFXButton manageschedulesBtn;
 
     @FXML
     private JFXButton logoutBtn;

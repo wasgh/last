@@ -63,8 +63,10 @@
                                        <children>
                                           <HBox prefHeight="42.0" prefWidth="491.0">
                                              <children>
-                                                <Label prefHeight="89.0" prefWidth="104.0" styleClass="card-subtitle" stylesheets="@../styles/styles.css" text="Skill" />
-                                                <JFXComboBox fx:id="cbauSkill" prefHeight="40.0" prefWidth="324.0" />
+                                                <Label alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="104.0" styleClass="card-subtitle" stylesheets="@../styles/styles.css" text="Skill" />
+                                                <JFXComboBox fx:id="cbauSkill" prefHeight="40.0" prefWidth="172.0" />
+                                                <Label alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="104.0" styleClass="card-subtitle" stylesheets="@../styles/styles.css" text="Level" />
+                                                <JFXComboBox fx:id="cbauLevel" prefHeight="40.0" prefWidth="191.0" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -74,7 +76,7 @@
                                     <HBox alignment="CENTER_RIGHT" prefHeight="77.0" prefWidth="511.0" spacing="20.0">
                                        <children>
                                           <JFXButton fx:id="btnauClear" styleClass="cancel-button" text="Clear" />
-                                          <JFXButton fx:id="btnauAddUser" layoutX="72.0" layoutY="10.0" prefHeight="37.0" prefWidth="100.0" styleClass="blue-btn" text="ADD USER" />
+                                          <JFXButton fx:id="btnauAddUser" layoutX="72.0" layoutY="10.0" prefHeight="37.0" prefWidth="132.0" styleClass="blue-btn" text="ADD USER" />
                                        </children>
                                        <padding>
                                           <Insets right="20.0" />
@@ -231,7 +233,9 @@
                                                 <HBox prefHeight="70.0" prefWidth="307.0">
                                                    <children>
                                                       <Label prefHeight="40.0" prefWidth="59.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="SKILL" />
-                                                      <JFXComboBox fx:id="cbeuSkill" prefHeight="40.0" prefWidth="238.0" />
+                                                      <JFXComboBox fx:id="cbeuSkill" prefHeight="40.0" prefWidth="114.0" />
+                                                      <Label prefHeight="40.0" prefWidth="59.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="LEVEL" />
+                                                      <JFXComboBox fx:id="cbeuLevel" prefHeight="40.0" prefWidth="71.0" />
                                                    </children>
                                                 </HBox>
                                                 <JFXButton fx:id="btneuSaveChanges" prefHeight="66.0" prefWidth="321.0" styleClass="green-btn" stylesheets="@../styles/styles.css" text="Save Changes" />
