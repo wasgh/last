@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -21,7 +20,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="684.0" prefWidth="1105.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManageUsers.ManageUsersController">
+<AnchorPane id="AnchorPane" prefHeight="721.0" prefWidth="1200.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManageUsers.ManageUsersController">
    <children>
       <JFXTabPane layoutX="138.0" layoutY="100.0" prefHeight="684.0" prefWidth="1105.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -29,9 +28,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1091.0">
                      <children>
-                        <AnchorPane layoutX="14.0" layoutY="158.0" prefHeight="391.0" prefWidth="1105.0" styleClass="card-unpadded" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <AnchorPane layoutY="259.0" prefHeight="464.0" prefWidth="1200.0" styleClass="card-unpadded" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <VBox layoutX="20.0" layoutY="14.0" prefHeight="380.0" prefWidth="415.0" spacing="10.0">
+                              <VBox layoutX="20.0" layoutY="14.0" prefHeight="428.0" prefWidth="417.0" spacing="30.0">
                                  <children>
                                     <JFXTextField fx:id="tfauFirstName" focusColor="#00add8" labelFloat="true" promptText="First Name" unFocusColor="#868282" />
                                     <JFXTextField fx:id="tfauLastName" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="10.0" promptText="Last Name" unFocusColor="#868282" />
@@ -41,32 +40,27 @@
                                     <JFXDatePicker fx:id="dpauBirthdate" prefHeight="34.0" prefWidth="384.0" promptText="Birthdate" />
                                  </children>
                                  <padding>
-                                    <Insets left="20.0" top="10.0" />
+                                    <Insets bottom="5.0" left="20.0" top="10.0" />
                                  </padding>
                               </VBox>
-                              <VBox layoutX="529.0" layoutY="16.0" prefHeight="374.0" prefWidth="511.0" spacing="10.0">
+                              <VBox layoutX="487.0" layoutY="16.0" prefHeight="388.0" prefWidth="647.0" spacing="10.0">
                                  <children>
-                                    <HBox prefHeight="52.0" prefWidth="491.0">
+                                    <HBox prefHeight="52.0" prefWidth="503.0" spacing="30.0">
                                        <children>
-                                          <JFXTextField fx:id="tfauUsername" focusColor="#00add8" labelFloat="true" maxWidth="228.0" minWidth="228.0" prefHeight="34.0" prefWidth="228.0" promptText="Username" unFocusColor="#868282" />
-                                          <JFXTextField fx:id="tfauPassword" focusColor="#00add8" labelFloat="true" maxWidth="260.0" minWidth="174.0" prefHeight="34.0" prefWidth="260.0" promptText="Password" unFocusColor="#868282" />
+                                          <JFXTextField fx:id="tfauUsername" focusColor="#00add8" labelFloat="true" maxWidth="258.0" minWidth="228.0" prefHeight="34.0" prefWidth="238.0" promptText="Username" unFocusColor="#868282" />
+                                          <JFXTextField fx:id="tfauPassword" accessibleRole="PASSWORD_FIELD" focusColor="#00add8" labelFloat="true" maxWidth="272.0" minWidth="174.0" prefHeight="34.0" prefWidth="272.0" promptText="Password" unFocusColor="#868282" />
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER" prefHeight="28.0" prefWidth="491.0">
+                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="82.0" prefWidth="553.0">
                                        <children>
-                                          <JFXRadioButton fx:id="rbauStudent" prefHeight="25.0" prefWidth="92.0" stylesheets="@../styles/styles.css" text="Student" />
-                                          <JFXRadioButton fx:id="rbauTeacher" style="-fx-background-color: 00ADD8;" stylesheets="@../styles/styles.css" text="Teacher" />
-                                          <JFXRadioButton fx:id="rbauAdministrator" style="-fx-background-color: 00ADD8;" stylesheets="@../styles/styles.css" text="Administrator" />
-                                       </children>
-                                    </HBox>
-                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="82.0" prefWidth="541.0">
-                                       <children>
-                                          <HBox prefHeight="42.0" prefWidth="491.0">
+                                          <HBox prefHeight="42.0" prefWidth="545.0">
                                              <children>
-                                                <Label alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="104.0" styleClass="card-subtitle" stylesheets="@../styles/styles.css" text="Skill" />
-                                                <JFXComboBox fx:id="cbauSkill" prefHeight="40.0" prefWidth="172.0" />
-                                                <Label alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="104.0" styleClass="card-subtitle" stylesheets="@../styles/styles.css" text="Level" />
-                                                <JFXComboBox fx:id="cbauLevel" prefHeight="40.0" prefWidth="191.0" />
+                                                <Label alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="38.0" styleClass="card-subtitle" stylesheets="@../styles/styles.css" text="Rank" />
+                                                <JFXComboBox fx:id="cbauSkill1" prefHeight="40.0" prefWidth="120.0" />
+                                                <Label alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="78.0" styleClass="card-subtitle" stylesheets="@../styles/styles.css" text="Skill" />
+                                                <JFXComboBox fx:id="cbauSkill" prefHeight="40.0" prefWidth="116.0" />
+                                                <Label alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="74.0" styleClass="card-subtitle" stylesheets="@../styles/styles.css" text="Level" />
+                                                <JFXComboBox fx:id="cbauLevel" prefHeight="40.0" prefWidth="119.0" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -141,14 +135,7 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="1103.0">
                                  <children>
-                                    <HBox layoutX="11.0" layoutY="-6.0" prefHeight="60.0" prefWidth="1092.0" styleClass="blue-label" stylesheets="@../styles/styles.css">
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="60.0" prefWidth="201.0" styleClass="black-label" stylesheets="@../styles/styles.css" text="FILTER BY" />
-                                          <JFXComboBox fx:id="cbeuRankFilter" prefHeight="60.0" prefWidth="455.0" promptText="Rank" stylesheets="@../styles/styles.css" />
-                                          <JFXComboBox fx:id="cbeuSkillFilter" prefHeight="60.0" prefWidth="514.0" promptText="Skill" />
-                                       </children>
-                                    </HBox>
-                                    <TableView fx:id="tvMainTable" layoutX="11.0" layoutY="53.0" prefHeight="342.0" prefWidth="1094.0">
+                                    <TableView fx:id="tvMainTable" layoutX="11.0" layoutY="1.0" prefHeight="416.0" prefWidth="1178.0">
                                       <columns>
                                         <TableColumn fx:id="nameCol" editable="false" prefWidth="209.0" text="Name" />
                                           <TableColumn fx:id="usernameCol" editable="false" prefWidth="128.0" text="Username" />
@@ -165,39 +152,39 @@
                                  <children>
                                     <HBox layoutY="-2.0" prefHeight="248.0" prefWidth="1105.0">
                                        <children>
-                                          <VBox prefHeight="248.0" prefWidth="437.0" spacing="10.0">
+                                          <VBox prefHeight="248.0" prefWidth="441.0" spacing="18.0">
                                              <padding>
-                                                <Insets left="20.0" top="10.0" />
+                                                <Insets bottom="10.0" left="20.0" top="10.0" />
                                              </padding>
                                              <children>
                                                 <HBox prefHeight="0.0" prefWidth="446.0">
                                                    <children>
-                                                      <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="USERNAME" />
+                                                      <Label prefHeight="35.0" prefWidth="80.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="FIRST NAME" />
+                                                      <JFXTextField fx:id="tfeuFirstName" maxWidth="312.0" minWidth="204.0" prefHeight="30.0" prefWidth="310.0" stylesheets="@../styles/styles.css" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="446.0">
+                                                   <children>
+                                                      <Label prefHeight="30.0" prefWidth="80.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="LAST NAME" />
+                                                      <JFXTextField fx:id="tfeuLastName" maxWidth="312.0" minWidth="204.0" prefHeight="30.0" prefWidth="306.0" stylesheets="@../styles/styles.css" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="446.0">
+                                                   <children>
+                                                      <Label prefHeight="30.0" prefWidth="88.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="USERNAME" />
                                                       <JFXTextField fx:id="tfeuUserName" maxWidth="312.0" minWidth="204.0" prefHeight="34.0" prefWidth="312.0" stylesheets="@../styles/styles.css" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="0.0" prefWidth="446.0">
                                                    <children>
-                                                      <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="PASSWORD" />
+                                                      <Label prefHeight="30.0" prefWidth="87.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="PASSWORD" />
                                                       <JFXTextField fx:id="tfeuPassoword" maxWidth="312.0" minWidth="204.0" prefHeight="34.0" prefWidth="312.0" stylesheets="@../styles/styles.css" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="0.0" prefWidth="446.0">
                                                    <children>
-                                                      <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="EMAIL" />
+                                                      <Label prefHeight="30.0" prefWidth="86.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="EMAIL" />
                                                       <JFXTextField fx:id="tfeuEmail" maxWidth="312.0" minWidth="204.0" prefHeight="34.0" prefWidth="312.0" stylesheets="@../styles/styles.css" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="0.0" prefWidth="446.0">
-                                                   <children>
-                                                      <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="FIRST NAME" />
-                                                      <JFXTextField fx:id="tfeuFirstName" maxWidth="312.0" minWidth="204.0" prefHeight="34.0" prefWidth="312.0" stylesheets="@../styles/styles.css" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox prefHeight="0.0" prefWidth="446.0">
-                                                   <children>
-                                                      <Label prefHeight="35.0" prefWidth="78.0" styleClass="blue-label" stylesheets="@../styles/styles.css" text="LAST NAME" />
-                                                      <JFXTextField fx:id="tfeuLastName" maxWidth="312.0" minWidth="204.0" prefHeight="34.0" prefWidth="312.0" stylesheets="@../styles/styles.css" />
                                                    </children>
                                                 </HBox>
                                              </children>

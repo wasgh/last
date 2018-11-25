@@ -15,7 +15,6 @@ public class Routes {
     public static String MAINVIEW = "/schoolmusic/HomeView.fxml";
     public static String DRAWERVIEW = "/schoolmusic/Drawer.fxml";
     public static String CONTACTUS="/contactus/ContactUs.fxml";
-    public static String APPOINTMENTSVIEW = "/appointments/AppointmentView.fxml";
     public static String PROFILEVIEW= "/ProfilePage/profilepage.fxml";
     public static String WELCOMEVIEW = "/schoolmusic/WelcomeView.fxml";
     public static String QUICKTOOLS="/login/quicktools.fxml";

@@ -29,7 +29,7 @@ import javax.persistence.Query;
 public class ManageUsersController implements Initializable {
          public   String persistenceUnitName="schoolMusicFxPU";
 
-    @FXML
+      @FXML
     private JFXTextField tfauFirstName;
 
     @FXML
@@ -54,16 +54,13 @@ public class ManageUsersController implements Initializable {
     private JFXTextField tfauPassword;
 
     @FXML
-    private JFXRadioButton rbauStudent;
-
-    @FXML
-    private JFXRadioButton rbauTeacher;
-
-    @FXML
-    private JFXRadioButton rbauAdministrator;
+    private JFXComboBox<?> cbauSkill1;
 
     @FXML
     private JFXComboBox<?> cbauSkill;
+
+    @FXML
+    private JFXComboBox<?> cbauLevel;
 
     @FXML
     private JFXTextArea taauAdditionalInfo;
@@ -84,13 +81,34 @@ public class ManageUsersController implements Initializable {
     private Label labelAdministrators;
 
     @FXML
-    private JFXComboBox<?> cbeuRankFilter;
-
-    @FXML
-    private JFXComboBox<?> cbeuSkillFilter;
-
-    @FXML
     private TableView<?> tvMainTable;
+
+    @FXML
+    private TableColumn<?, ?> nameCol;
+
+    @FXML
+    private TableColumn<?, ?> usernameCol;
+
+    @FXML
+    private TableColumn<?, ?> emailCol;
+
+    @FXML
+    private TableColumn<?, ?> rankCol;
+
+    @FXML
+    private TableColumn<?, ?> skillCol;
+
+    @FXML
+    private TableColumn<?, ?> phoneNumberCol;
+
+    @FXML
+    private TableColumn<?, ?> dataAddedCol;
+
+    @FXML
+    private JFXTextField tfeuFirstName;
+
+    @FXML
+    private JFXTextField tfeuLastName;
 
     @FXML
     private JFXTextField tfeuUserName;
@@ -100,12 +118,6 @@ public class ManageUsersController implements Initializable {
 
     @FXML
     private JFXTextField tfeuEmail;
-
-    @FXML
-    private JFXTextField tfeuFirstName;
-
-    @FXML
-    private JFXTextField tfeuLastName;
 
     @FXML
     private JFXTextField tfeuPhoneNumber;
@@ -121,18 +133,16 @@ public class ManageUsersController implements Initializable {
 
     @FXML
     private JFXComboBox<?> cbeuSkill;
-    
+
     @FXML
     private JFXComboBox<?> cbeuLevel;
-    
-    @FXML
-    private JFXComboBox<?> cbauLevel;
 
     @FXML
     private JFXButton btneuSaveChanges;
 
     @FXML
     private JFXButton btneuDeleteUser;
+
     /**
      * Initializes the controller class.
      */

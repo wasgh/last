@@ -103,20 +103,20 @@ public class LoginController implements Initializable {
 
  @FXML
     private void loginAction(ActionEvent event) throws IOException {
-        loggingProgress.setVisible(true);
+      /*  loggingProgress.setVisible(true);
         PauseTransition pauseTransition = new PauseTransition();
         pauseTransition.setDuration(Duration.seconds(5));
         pauseTransition.setOnFinished(ev -> {
             try {
                 System.out.println("Complete one");
-                // completeLogin();
+                 //completeLogin();
                 System.out.println("DO IT");
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(Routes.MAINVIEW));
                 Parent root =(Parent)loader.load();
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
-                 // FXMLLoader  loader =new FXMLLoader(getClass().getResource(Routes.MAINVIEW));
-               //    HomeViewController controller = new HomeViewController(txtUsername.getText(), txtPassword.getText());
+                FXMLLoader  loader =new FXMLLoader(getClass().getResource(Routes.MAINVIEW));
+                   HomeViewController controller = new HomeViewController(txtUsername.getText(), txtPassword.getText());
 
                 scene.getStylesheets().add(SchoolMusic.class.getResource("/styles/styles.css").toExternalForm());
                 stage.initStyle(StageStyle.UNDECORATED);
@@ -124,28 +124,27 @@ public class LoginController implements Initializable {
                 
                 if (isValidInput())
                 { completeLogin();
-/*                *///    TableUsername tableUsername = new TableUsername ();
-                 //   // HomeViewController homeViewController =  (HomeViewController)loader.getController();
-                 //      HomeViewController homeViewController =  (HomeViewController)loader.getController();
-                   //  homeViewController.GetData(txtUsername.getText(), txtPassword.getText());
-                  //   tableUsername.setUsername(txtUsername.getText().toString());
-                 //    tableUsername.setPassword(txtPassword.getText().toString());
-                  //   homeViewController.initData(tableUsername);
-                 //    homeViewController.initData(txtUsername.getText(), txtPassword.getText().toString());
-                    // homeViewController.setStringPassword(txtPassword.getText());
-                  //     homeViewController.setStringUsername(txtUsername.getText().toString());
-//
+                   TableUsername tableUsername = new TableUsername ();
+                    HomeViewController homeViewController =  (HomeViewController)loader.getController();
+                       HomeViewController homeViewController =  (HomeViewController)loader.getController();
+                     homeViewController.GetData(txtUsername.getText(), txtPassword.getText());
+                     tableUsername.setUsername(txtUsername.getText().toString());
+                     tableUsername.setPassword(txtPassword.getText().toString());
+                     homeViewController.initData(tableUsername);
+                     homeViewController.initData(txtUsername.getText(), txtPassword.getText().toString());
+                     homeViewController.setStringPassword(txtPassword.getText());
+                       homeViewController.setStringUsername(txtUsername.getText().toString());
+
                     stage.hide(); //optional
                     stage.setScene(scene);
                     stage.show();  
-                                    btnLogin.getScene().getWindow().hide();
+                    btnLogin.getScene().getWindow().hide();
 
                 }
                 else
                 {
-                    txtUsername.clear();
-                    txtPassword.clear();
-                    invalid_label.setText("Sorry, invalid credentials");
+                    txtUsername.clear();                   txtPassword.clear();
+                   invalid_label.setText("Sorry, invalid credentials");
                 }
                 System.out.println("Complete two");
             } catch (IOException ex) {
@@ -154,7 +153,19 @@ public class LoginController implements Initializable {
         });
         pauseTransition.play();
 
+      */
       
+      
+      //ali's barrier
+      loggingProgress.setVisible(true);
+        PauseTransition pauseTransition = new PauseTransition();
+        pauseTransition.setDuration(Duration.seconds(5));
+        pauseTransition.setOnFinished(ev -> {
+            System.out.println("Complte one");
+            completeLogin();
+            System.out.println("Complte two");
+        });
+        pauseTransition.play();
     }
         @FXML
     void forgotpw(ActionEvent event) {
@@ -229,7 +240,14 @@ public class LoginController implements Initializable {
 
         }
     }
-   /* private boolean isValidCredentials()
+    
+    
+    
+    
+    
+    
+    
+    private boolean isValidCredentials()
     {
         boolean let_in = false;
         System.out.println( "SELECT * FROM TABLE_USERNAME WHERE USERNAME= " + "'" + txtUsername.getText() + "'" 
@@ -270,5 +288,5 @@ public class LoginController implements Initializable {
             return let_in;
         
     }
-*/
+
 }

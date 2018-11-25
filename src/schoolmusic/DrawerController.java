@@ -73,12 +73,12 @@ public class DrawerController implements Initializable {
     private void exit(ActionEvent event) {
         Platform.exit();
     }
-    String musicFile = "roads.mp3";     // For example
-        @FXML
+    
+    @FXML
     void PlayMusic(MouseEvent event) {
         
     String uriString;
-    uriString = new File("D:\\WorkSpace\\NetBeansProjects\\MusicSchool\\r1\\src\\sounds\\longa_riad.mp3").toURI().toString();
+    uriString = new File("C:\\Users\\virtualali\\Desktop\\NetBeansProjects\\musicschool\\src\\sounds\\longa_riad.mp3").toURI().toString();
     player = new MediaPlayer( new Media(uriString));
     player.play();
     
