@@ -78,7 +78,7 @@ public class DrawerController implements Initializable {
     void PlayMusic(MouseEvent event) {
         
     String uriString;
-    uriString = new File("C:\\Users\\virtualali\\Desktop\\NetBeansProjects\\musicschool\\src\\sounds\\longa_riad.mp3").toURI().toString();
+    uriString = new File("D:\\WorkSpace\\NetBeansProjects\\musicschool\\src\\sounds\\longa_riad.mp3").toURI().toString();
     player = new MediaPlayer( new Media(uriString));
     player.play();
     

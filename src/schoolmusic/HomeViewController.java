@@ -12,8 +12,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXPopup;
+import com.jfoenix.controls.JFXToolbar;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import helpers.Routes;
+import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,7 +32,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -58,12 +62,16 @@ public class HomeViewController implements Initializable {
 //    private StringProperty UsernameString = new SimpleStringProperty();
     @FXML
     private JFXHamburger hamburger;
+    HamburgerBackArrowBasicTransition transition;
     @FXML
     private AnchorPane holderPane;
     @FXML
     private JFXDrawer drawer;
     @FXML
     private Label txtCurrentWindow;
+    
+    @FXML
+    private JFXToolbar toolbar;
 EntityManagerFactory emf ;
    EntityManager em;
    static private String StringDrawer;
@@ -97,7 +105,7 @@ EntityManagerFactory emf ;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
+     transition = new HamburgerBackArrowBasicTransition(hamburger);
         transition.setRate(-1);
         hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
             transition.setRate(transition.getRate() * -1);
@@ -117,7 +125,8 @@ EntityManagerFactory emf ;
                 AnchorPane Profileview=FXMLLoader.load(getClass().getResource(Routes.PROFILEVIEW));
                 AnchorPane contactus = FXMLLoader.load(getClass().getResource(Routes.CONTACTUS));
                 AnchorPane welcome = FXMLLoader.load(getClass().getResource(Routes.WELCOMEVIEW));
-            setNode(welcome);
+                AnchorPane contactusers=FXMLLoader.load(getClass().getResource(Routes.CONTACTUSERS));
+               setNode(welcome);
             drawer.setSidePane(sidePane);
 
             for (Node node : sidePane.getChildren()) {
@@ -127,20 +136,40 @@ EntityManagerFactory emf ;
                              case "homeMenu":
                                     drawer.close();
                                     setNode(welcome);
+                                    this.txtCurrentWindow.setText("Home Page");
+                                    transition.setRate(transition.getRate() * -1);
+                                    transition.play();
                                     break;
                                     
                                 case "profileMenu":
                                     drawer.close();
                                     setNode(Profileview);
-                                    break;
+                                    this.txtCurrentWindow.setText("Profile Page");
+                                     transition.setRate(transition.getRate() * -1);
+                                     transition.play();                              
+                                     break;
+                                     
                                 case "contactusMenu":
                                     drawer.close();
                                     setNode(contactus);
+                                    transition.setRate(transition.getRate() * -1);
+                                    transition.play();   
+                                    break;
+                                    
+                                case "contactusersMenu":
+                                    drawer.close();
+                                    setNode(contactusers);
+                                    this.txtCurrentWindow.setText("Contact Users");
+                                    transition.setRate(transition.getRate() * -1);
+                                    transition.play();   
                                     break;
                                     
                                 case "manageusersMenu":
                                     drawer.close();
                                     setNode(ManageUsers);
+                                    this.txtCurrentWindow.setText("Manage Users");
+                                    transition.setRate(transition.getRate() * -1);
+                                    transition.play();   
                                     break;
                                     
                                                

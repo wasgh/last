@@ -76,7 +76,7 @@
 }
 
 .card-title .text {
-    -fx-fill: -fx-text-title-color;
+   
 }
 
 .card-subtitle {
@@ -85,7 +85,7 @@
 }
 
 .card-subtitle .text {
-    -fx-fill: -fx-text-subtitle-color;
+   
 }
 /*Buttons*/
 .fab{
@@ -99,11 +99,11 @@
 }
 .drawer-buttons{
     -fx-background-color: rgb(240, 240, 240);
-    -fx-text-alignment: left;
+
     -fx-text-fill: #222d32;
      -fx-font-size:14px;
     -fx-padding: 0 0 0 30;
-    -fx-alignment:left ;
+
 }
 .drawer-buttons:hover{
     -fx-background-color:#cccccc;
@@ -159,13 +159,13 @@
 
 /*Material list view*/
 .list-view:focused .list-cell:filled:focused:selected {
-    -fx-background-color: -swatch-light-grey;
-    -fx-text-fill: -swatch-500;
+    -fx-background-color: CDCDCD;
+    -fx-text-fill: #00000;
 }
 
 .list-view:hover .list-cell:hover {
-    -fx-background-color: -swatch-light-grey;
-    -fx-text-fill: -fx-text-base-color;
+    -fx-background-color: CDCDCD;
+    -fx-text-fill: CDCDCD;
 }
 
 .list-cell {
@@ -193,6 +193,16 @@
     -fx-font-size:12px;
     -fx-padding: 0 0 0 2;
 }
+
+.grey-label{
+    -fx-text-fill: white;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4px;
+    -fx-background-color:  grey;
+    -fx-font-weight:bold;
+    -fx-font-size:12px;
+    -fx-padding: 0 0 0 2;
+}
 .black-label{
     -fx-text-fill: white;
     -fx-border-radius: 4;
@@ -202,13 +212,22 @@
     -fx-font-size:12px;
     -fx-padding: 0 0 0 2;
 }
-.yellow-label{
+.announcement-label{
+    -fx-text-fill: yellow;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4px;
+    -fx-background-color:  grey;
+    -fx-font-weight:bold;
+    -fx-font-size:20px;
+    -fx-padding: 0 0 0 2;
+}
+.messages-label{
     -fx-text-fill: white;
     -fx-border-radius: 4;
     -fx-background-radius: 4px;
-    -fx-background-color:   #D3DC00;
+    -fx-background-color:  grey;
     -fx-font-weight:bold;
-    -fx-font-size:12px;
+    -fx-font-size:20px;
     -fx-padding: 0 0 0 2;
 }
 .green-label{
@@ -220,6 +239,7 @@
     -fx-font-size:12px;
     -fx-padding: 0 0 0 2;
 }
+
 .red-label{
     -fx-text-fill: white;
     -fx-border-radius: 4;
@@ -274,7 +294,6 @@ search field
 }
 .table-view .column-header .label{
     -fx-font-size:14px;
-    -fx-text-fill: -color-primary;
     -fx-padding:16 0 16 0;
     -fx-alignment:CENTER-LEFT;
     -fx-font-weight:400;
@@ -314,7 +333,6 @@ search field
     -fx-padding:0 8 8 8;
     -fx-background-insets: 0;
     -fx-border-width:0 0 2 0;
-    -fx-border-color: -color-primary;
 }
 
 .table-view .corner{

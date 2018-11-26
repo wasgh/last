@@ -103,67 +103,13 @@ public class LoginController implements Initializable {
 
  @FXML
     private void loginAction(ActionEvent event) throws IOException {
-      /*  loggingProgress.setVisible(true);
-        PauseTransition pauseTransition = new PauseTransition();
-        pauseTransition.setDuration(Duration.seconds(5));
-        pauseTransition.setOnFinished(ev -> {
-            try {
-                System.out.println("Complete one");
-                 //completeLogin();
-                System.out.println("DO IT");
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(Routes.MAINVIEW));
-                Parent root =(Parent)loader.load();
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-                FXMLLoader  loader =new FXMLLoader(getClass().getResource(Routes.MAINVIEW));
-                   HomeViewController controller = new HomeViewController(txtUsername.getText(), txtPassword.getText());
-
-                scene.getStylesheets().add(SchoolMusic.class.getResource("/styles/styles.css").toExternalForm());
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.setScene(scene);
-                
-                if (isValidInput())
-                { completeLogin();
-                   TableUsername tableUsername = new TableUsername ();
-                    HomeViewController homeViewController =  (HomeViewController)loader.getController();
-                       HomeViewController homeViewController =  (HomeViewController)loader.getController();
-                     homeViewController.GetData(txtUsername.getText(), txtPassword.getText());
-                     tableUsername.setUsername(txtUsername.getText().toString());
-                     tableUsername.setPassword(txtPassword.getText().toString());
-                     homeViewController.initData(tableUsername);
-                     homeViewController.initData(txtUsername.getText(), txtPassword.getText().toString());
-                     homeViewController.setStringPassword(txtPassword.getText());
-                       homeViewController.setStringUsername(txtUsername.getText().toString());
-
-                    stage.hide(); //optional
-                    stage.setScene(scene);
-                    stage.show();  
-                    btnLogin.getScene().getWindow().hide();
-
-                }
-                else
-                {
-                    txtUsername.clear();                   txtPassword.clear();
-                   invalid_label.setText("Sorry, invalid credentials");
-                }
-                System.out.println("Complete two");
-            } catch (IOException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-        pauseTransition.play();
-
-      */
-      
-      
-      //ali's barrier
+    
       loggingProgress.setVisible(true);
         PauseTransition pauseTransition = new PauseTransition();
         pauseTransition.setDuration(Duration.seconds(5));
         pauseTransition.setOnFinished(ev -> {
-            System.out.println("Complte one");
             completeLogin();
-            System.out.println("Complte two");
+          
         });
         pauseTransition.play();
     }
@@ -221,10 +167,6 @@ public class LoginController implements Initializable {
                 user.setUsername(txtUsername.getText());
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW));
-             //   JFXDecorator decorator = new JFXDecorator(stage, root, false, false, true);
-             //   decorator.setCustomMaximize(false);
-             //   decorator.setBorder(Border.EMPTY);
-
                 Scene scene = new Scene(root);
                 scene.getStylesheets().add(SchoolMusic.class.getResource("/styles/styles.css").toExternalForm());
                 stage.initStyle(StageStyle.UNDECORATED);
@@ -232,7 +174,6 @@ public class LoginController implements Initializable {
 
                 stage.setIconified(false);
                 stage.show();
-                //Hide login window
                 btnLogin.getScene().getWindow().hide();
             } catch (IOException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
