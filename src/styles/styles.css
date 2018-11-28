@@ -148,6 +148,15 @@
     -fx-font-weight:bold ;
 }
 
+.white-btn{
+    -fx-background-color: #F6F6F6;
+    -fx-text-fill: #ffffff;
+    -fx-text-alignment: right;
+    -fx-button-type:raised;
+    -fx-font-size:16px;
+    -fx-font-weight:bold ;
+}
+
 .red-btn{
     -fx-background-color: rgb(219,0,0);
     -fx-text-fill: #ffffff;

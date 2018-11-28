@@ -6,12 +6,20 @@
 package ProfilePage;
 
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * FXML Controller class
@@ -21,34 +29,67 @@ import javafx.fxml.Initializable;
 public class ProfilepageController implements Initializable {
     
     @FXML
-    private Label labelprofileUsername;
+    private Label labelName;
 
     @FXML
-    private Label labelprofileName;
+    private HBox labelAge1;
 
     @FXML
-    private Label labelprofileRank;
+    private Label labelUsername;
 
     @FXML
-    private Label labelprofileSkill;
+    private Label labelRank;
 
     @FXML
-    private Label labelprofileEmail;
+    private Label labelSkill;
 
     @FXML
-    private Label labelprofilePhonenumber;
+    private Label labelLevel;
 
     @FXML
-    private Label labelprofileBirthdate;
+    private Label labelAge;
 
     @FXML
-    private Button btnprofileHomePage;
+    private JFXTextField tfEmail;
+
+    @FXML
+    private JFXTextField tfPhoneNumber;
+
+    @FXML
+    private JFXTextField tfAdditionalInfo;
+
+    @FXML
+    private JFXButton btnSaveChanges;
+
+    @FXML
+    private JFXButton btnViolin;
+    @FXML
+    public MediaPlayer player;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
-}
+     @FXML
+    void PlayViolin (MouseEvent event) {
+        
+    String uriString;
+    uriString = new File("D:\\WorkSpace\\NetBeansProjects\\musicschool\\src\\sounds\\springvivaldi.mp3").toURI().toString();
+    player = new MediaPlayer( new Media(uriString));
+    player.play();
+    
+    }
+
+    @FXML
+    void StopViolin(MouseEvent event) {
+        player.stop();
+    }
+
+ }
+    
+
