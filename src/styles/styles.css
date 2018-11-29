@@ -130,6 +130,18 @@
     -fx-font-weight:bold ;
     
 }
+.black-btn{
+    -fx-background-color: black; 
+    -fx-button-type:raised;
+    -fx-font-weight:bold ;
+    
+}
+.white-btn{
+    -fx-background-color:white;
+    -fx-button-type:raised;
+    -fx-font-weight:bold ;
+    
+}
 .cancel-button{
     -fx-animated: true;
     -fx-background-color: #DDDDDD;

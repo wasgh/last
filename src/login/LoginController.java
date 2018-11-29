@@ -106,7 +106,7 @@ public class LoginController implements Initializable {
     
       loggingProgress.setVisible(true);
         PauseTransition pauseTransition = new PauseTransition();
-        pauseTransition.setDuration(Duration.seconds(5));
+        pauseTransition.setDuration(Duration.seconds(1));
         pauseTransition.setOnFinished(ev -> {
             completeLogin();
           
