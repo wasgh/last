@@ -66,7 +66,7 @@ public class WelcomeController implements Initializable {
         note = (JFXButton) event.getSource();
     
     String uriString;
-   uriString = new File("D:\\WorkSpace\\NetBeansProjects\\musicschool\\src\\sounds\\piano\\"+note.getAccessibleText()+".mp3").toURI().toString();
+   uriString = new File("C:\\Users\\virtualali\\Desktop\\NetBeansProjects\\musicschool\\src\\sounds\\piano\\"+note.getAccessibleText()+".mp3").toURI().toString();
     //uriString = new File("\\"+note.getAccessibleText()+".mp3").toURI().toString();
     player = new MediaPlayer( new Media(uriString));
     player.play();

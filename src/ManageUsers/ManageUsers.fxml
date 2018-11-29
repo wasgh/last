@@ -86,7 +86,7 @@
                                     <HBox alignment="CENTER_RIGHT" prefHeight="77.0" prefWidth="511.0" spacing="20.0">
                                        <children>
                                           <JFXButton fx:id="btnauClear" onAction="#clearfields" styleClass="cancel-button" stylesheets="@../styles/styles.css" text="Clear" />
-                                          <JFXButton fx:id="btnauAddUser" layoutX="72.0" layoutY="10.0" prefHeight="37.0" prefWidth="132.0" styleClass="blue-btn" stylesheets="@../styles/styles.css" text="ADD USER">
+                                          <JFXButton fx:id="btnauAddUser" layoutX="72.0" layoutY="10.0" onAction="#addUser" prefHeight="37.0" prefWidth="132.0" styleClass="blue-btn" stylesheets="@../styles/styles.css" text="ADD USER">
                                              <effect>
                                                 <DropShadow />
                                              </effect></JFXButton>
@@ -281,11 +281,11 @@
                                                       </JFXButton>
                                                    </children>
                                                 </HBox>
-                                                <JFXButton fx:id="btneuSaveChanges" prefHeight="50.0" prefWidth="305.0" styleClass="blue-btn" stylesheets="@../styles/styles.css" text="Save Changes">
+                                                <JFXButton fx:id="btneuSaveChanges" onAction="#saveChanges" prefHeight="50.0" prefWidth="305.0" styleClass="blue-btn" stylesheets="@../styles/styles.css" text="Save Changes">
                                                    <effect>
                                                       <DropShadow />
                                                    </effect></JFXButton>
-                                                <JFXButton fx:id="btneuDeleteUser" prefHeight="43.0" prefWidth="305.0" styleClass="red-btn" stylesheets="@../styles/styles.css" text="Delete User">
+                                                <JFXButton fx:id="btneuDeleteUser" onAction="#deleteUser" prefHeight="43.0" prefWidth="305.0" styleClass="red-btn" stylesheets="@../styles/styles.css" text="Delete User">
                                                    <effect>
                                                       <InnerShadow />
                                                    </effect></JFXButton>

@@ -20,4 +20,8 @@ public class Routes {
     public static String QUICKTOOLS="/login/quicktools.fxml";
     public static String FORGOTPW="/login/forgotpw.fxml";
     public static String CONTACTUSERS="/ContactUsers/contactusers.fxml";
+    
+
+   
 }
+

@@ -5,6 +5,7 @@
  */
 package schoolmusic;
 
+import Database.OracleConnection;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -18,6 +19,10 @@ import helpers.Routes;
 import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +56,10 @@ import models.User;
 public class HomeViewController implements Initializable {
    static public String stringUsername;
    static   public  String stringPassword;
+
+  
+  
+
     public static void setStringPassword() {
     }
    // private final LoginController aThis;
@@ -60,6 +69,9 @@ public class HomeViewController implements Initializable {
     
 //          private StringProperty PasswordString = new SimpleStringProperty();
 //    private StringProperty UsernameString = new SimpleStringProperty();
+    private ResultSet result = null;
+    public Connection conn;
+    
     @FXML
     private JFXHamburger hamburger;
     HamburgerBackArrowBasicTransition transition;
@@ -67,9 +79,9 @@ public class HomeViewController implements Initializable {
     private AnchorPane holderPane;
     @FXML
     private JFXDrawer drawer;
+
     @FXML
-    private Label txtCurrentWindow;
-    
+    private Label txtCurrentWindow;    
     @FXML
     private JFXToolbar toolbar;
 EntityManagerFactory emf ;
@@ -116,9 +128,11 @@ EntityManagerFactory emf ;
             } else {
                 drawer.open();
             }
-
+            
+            
         });
         try {
+            
             VBox sidePane = FXMLLoader.load(getClass().getResource("/schoolmusic/Drawer.fxml"));
             AnchorPane login = FXMLLoader.load(getClass().getResource(Routes.LOGINVIEW));
                 AnchorPane ManageUsers=FXMLLoader.load(getClass().getResource(Routes.MANAGEUSERS));
@@ -193,6 +207,7 @@ EntityManagerFactory emf ;
         holderPane.getChildren().add((Node) node);
     }
 
+        
 
 
 }

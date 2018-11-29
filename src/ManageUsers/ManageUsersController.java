@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ManageUsers;
-
+import Database.CurrentUser;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -16,12 +16,18 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -33,6 +39,7 @@ import javax.persistence.Query;
  *
  * @author ai-19
  */
+
 public class ManageUsersController implements Initializable {
          public   String persistenceUnitName="schoolMusicFxPU";
 
@@ -77,7 +84,11 @@ public class ManageUsersController implements Initializable {
 
     @FXML
     private JFXButton btnauClear;
+    
+    @FXML
+    private Button nidal;
 
+   
     @FXML
     private JFXButton btnauAddUser;
 
@@ -256,6 +267,54 @@ public class ManageUsersController implements Initializable {
 
     }
     }
-        
+/*
+        String dbURL = "jdbc:oracle:thin:@localhost:1521:orcl";
+String username = "hr";
+String password = "hr";
+ 
+try {
+ 
+    Connection conn = DriverManager.getConnection(dbURL, username, password);
+    String sql = "SELECT NAME FROM SKILLS";
+        Statement statement = conn.createStatement();
+        ResultSet result = statement.executeQuery(sql);
+        while (result.next()){
+            String name = result.getString("NAME");
+            System.out.printf(name);
+        }
+ 
     
+} catch (SQLException ex) {
 }
+
+
+    */
+    
+    @FXML
+    void deleteUser(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saveChanges(ActionEvent event) {
+
+    }
+    @FXML 
+    void addUser(ActionEvent event)
+    {
+        
+    }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+    }
+        
+  

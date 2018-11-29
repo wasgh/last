@@ -7,6 +7,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -59,6 +60,7 @@
          <image>
             <Image url="@../imgs/logincoverpic.png" />
          </image>
-      </ImageView> 
+      </ImageView>
+      <Label fx:id="labelWarning" alignment="CENTER" layoutX="207.0" layoutY="556.0" prefHeight="23.0" prefWidth="286.0" text="Invalid Login Username/Password" textFill="RED" /> 
    </children>
 </AnchorPane>

@@ -5,8 +5,11 @@
  */
 package schoolmusic;
 
+import Database.CurrentUser;
+import Database.OracleConnection;
 import helpers.Routes;
 import com.jfoenix.controls.JFXDecorator;
+import java.sql.Connection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,19 +24,23 @@ import javafx.stage.StageStyle;
  */
 public class SchoolMusic extends Application {
     
+    Connection conn;
+    
     @Override
     public void start(Stage stage) throws Exception {
-          Parent root = FXMLLoader.load(getClass().getResource(Routes.LOGINVIEW));
+
+        Parent root = FXMLLoader.load(getClass().getResource(Routes.LOGINVIEW));
         JFXDecorator decorator=new JFXDecorator(stage, root, false, false, true);
         decorator.setCustomMaximize(false);
-        decorator.setBorder(Border.EMPTY);
-        
+        decorator.setBorder(Border.EMPTY);    
         Scene scene = new Scene(decorator);
         scene.getStylesheets().add(SchoolMusic.class.getResource("/styles/styles.css").toExternalForm());
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setScene(scene);
-        
+        stage.setScene(scene);      
         stage.setIconified(false);
+        
+        CheckConnection();
+        
         stage.show();
     }
 
@@ -42,6 +49,14 @@ public class SchoolMusic extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    public void CheckConnection()
+    {   CurrentUser user =new CurrentUser();
+        conn=OracleConnection.DBConnector();
+        if(conn==null){
+           System.out.println("Connection Not Successful");
+           System.exit(1);           
+        }      
     }
     
 }

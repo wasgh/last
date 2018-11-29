@@ -10,6 +10,8 @@
  */
 package login;
 
+import Database.CurrentUser;
+import Database.OracleConnection;
 import models.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -22,10 +24,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,6 +51,7 @@ import schoolmusic.HomeViewController;
 import schoolmusic.SchoolMusic;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.EventHandler;
 
 
 /**
@@ -54,8 +59,8 @@ import javafx.beans.property.StringProperty;
  * @author wasim
  */
 public class LoginController implements Initializable {
-//public String  username ;
- //public  String password; 
+
+    String ID;
     @FXML
     private JFXButton btnLogin;
     @FXML
@@ -66,19 +71,31 @@ public class LoginController implements Initializable {
     private JFXPasswordField txtPassword;
     @FXML
     private JFXButton btnQuickAccessTools;
-     @FXML
-    private Label  invalid_label;
+    @FXML
+    private Label labelWarning;
     @FXML
     private Hyperlink forgotpw;
+    
+    
     private Connection conn = null;
     private PreparedStatement ps = null;
-    private ResultSet rs = null;
-    private StringProperty PasswordString = new SimpleStringProperty();
-    private StringProperty UsernameString = new SimpleStringProperty();
+    private ResultSet result = null;
+    
     public String username;
+    private FadeTransition fadeIn = new FadeTransition(
+    Duration.millis(1000)
+);
+        private FadeTransition fadeOut = new FadeTransition(
+    Duration.millis(2000)
+);
+        PauseTransition visiblePause = new PauseTransition(
+        Duration.seconds(3)
+);
+
     public String password;
     //HomeViewController aThis;
 //HomeViewController omeViewController =new HomeViewController(this);
+    private EventHandler<ActionEvent> event;
 
  
 
@@ -92,6 +109,18 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         loggingProgress.setVisible(false);
+        labelWarning.setVisible(false);
+        
+    fadeIn.setNode(labelWarning);
+    fadeIn.setFromValue(0.0);
+    fadeIn.setToValue(1.0);
+    fadeIn.setCycleCount(1);
+    fadeIn.setAutoReverse(true);
+    fadeOut.setNode(labelWarning);
+    fadeOut.setFromValue(1.0);
+    fadeOut.setToValue(0.0);
+    fadeOut.setCycleCount(1);
+    fadeOut.setAutoReverse(true);
 
     }
        /**
@@ -102,18 +131,36 @@ public class LoginController implements Initializable {
      */
 
  @FXML
-    private void loginAction(ActionEvent event) throws IOException {
-    
-      loggingProgress.setVisible(true);
-        PauseTransition pauseTransition = new PauseTransition();
-        pauseTransition.setDuration(Duration.seconds(1));
-        pauseTransition.setOnFinished(ev -> {
-            completeLogin();
-          
-        });
-        pauseTransition.play();
+    private void loginAction(ActionEvent event) throws IOException, InterruptedException {
+        labelWarning.setVisible(false);
+        
+        try {
+            if(isValidCredentials()&&isValidInput())
+            {
+                loggingProgress.setVisible(true);
+                PauseTransition pauseTransition = new PauseTransition();
+                pauseTransition.setDuration(Duration.seconds(1));
+                pauseTransition.setOnFinished(ev -> {
+                    AccessGranted();
+                    
+                });
+                pauseTransition.play();
+            }
+            else
+            {
+                
+                labelWarning.setVisible(true);    
+                fadeIn.play();                 
+                fadeOut.play();
+                
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-        @FXML
+    
+    @FXML
     void forgotpw(ActionEvent event) {
         try {
                 
@@ -159,19 +206,17 @@ public class LoginController implements Initializable {
         return (txtUsername.getText().trim().length() > 0) && (txtPassword.getText().trim().length() > 0);
     }
 
-    private void completeLogin() {
+    private void AccessGranted() {
         loggingProgress.setVisible(false);
         if (isValidInput()) {
             try {
-                User user=new User();
-                user.setUsername(txtUsername.getText());
+                CurrentUser.ID=this.ID;
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW));
                 Scene scene = new Scene(root);
                 scene.getStylesheets().add(SchoolMusic.class.getResource("/styles/styles.css").toExternalForm());
                 stage.initStyle(StageStyle.UNDECORATED);
                 stage.setScene(scene);
-
                 stage.setIconified(false);
                 stage.show();
                 btnLogin.getScene().getWindow().hide();
@@ -182,52 +227,30 @@ public class LoginController implements Initializable {
         }
     }
     
-    
-    
-    
-    
-    
-    
-    private boolean isValidCredentials()
+
+    private boolean isValidCredentials() throws SQLException
     {
         boolean let_in = false;
-        System.out.println( "SELECT * FROM TABLE_USERNAME WHERE USERNAME= " + "'" + txtUsername.getText() + "'" 
-            + " AND PASSWORD= " + "'" + txtPassword.getText() + "'" );
-    
-        Connection c = null;
-        Statement stmt = null;
-        try {
-            c = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","hr");
-            c.setAutoCommit(false);
-            
-            System.out.println("Opened database successfully");
-            stmt = c.createStatement();
-            
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM TABLE_USERNAME WHERE USERNAME= " + "'" + txtUsername.getText() + "'" 
-            + " AND PASSWORD= " + "'" + txtPassword.getText() + "'");
-            
-            while ( rs.next() ) {
-                 if (rs.getString("USERNAME") != null && rs.getString("PASSWORD") != null) { 
-                       username = rs.getString("USERNAME");
-                     System.out.println( "USERNAME = " + txtUsername.getText() );
-                      password = rs.getString("PASSWORD");
-                     System.out.println("PASSWORD = " + txtPassword.getText());
-                    
-                     let_in = true;
-                 }  
+        conn=OracleConnection.DBConnector();
+        String sql = "SELECT * FROM USERS WHERE USERNAME='" + txtUsername.getText() + "'";
+        Statement statement;     
+            statement = conn.createStatement();
+            result = statement.executeQuery(sql); 
+            if(result.next())
+            {
+                if(result.getString("PASSWORD").equals(this.txtPassword.getText()))
+                {
+                   let_in=true;
+                   this.ID=result.getString("ID");
+                }
             }
-            rs.close();
-            stmt.close();
-            c.close();
-            } catch ( Exception e ) {
-                System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-                System.exit(0);
-            }
-            System.out.println("Operation done successfully");
-            System.out.println(let_in);
-
+            
             return let_in;
         
     }
-
+    
+    
+    
+    
+   
 }
