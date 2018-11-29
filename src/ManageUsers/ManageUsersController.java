@@ -154,8 +154,6 @@ public class ManageUsersController implements Initializable {
     @FXML
     private JFXTextArea taeuAdditionalInfo;
 
-    @FXML
-    private JFXComboBox<?> cbeuRank;
 
     @FXML
     private JFXComboBox<?> cbeuSkill;
@@ -168,7 +166,8 @@ public class ManageUsersController implements Initializable {
 
     @FXML
     private JFXButton btneuDeleteUser;
-        @FXML
+    @FXML
+    
     private JFXButton btneuPrint;
 
     @FXML
@@ -224,7 +223,7 @@ public class ManageUsersController implements Initializable {
         listrank.add("Administrator");   
         ObservableList obListrank = FXCollections.observableList(listrank);
         this.cbauRank.setItems(obListrank);
-        this.cbeuRank.setItems(obListrank);
+
     }    
      @FXML
     void clearfields(ActionEvent event) {
