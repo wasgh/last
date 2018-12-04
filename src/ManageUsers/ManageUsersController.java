@@ -21,6 +21,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -34,6 +35,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -41,6 +43,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -202,13 +205,13 @@ public class ManageUsersController implements Initializable {
 
     @FXML
     private JFXCheckBox checkboxeuFemale;
-    String sTeacher = "Select count(*)AS rowcount FROM table_teacher,table_username Where table_username.username_id=table_teacher.id_teacher ";
-    String sSTUDENT = "Select count(*)AS rowcount FROM TABLE_STUDENT,table_username Where table_username.username_id=TABLE_STUDENT.ID_STUDENT";
-    String sMANAGER = "Select count(*)AS rowcount FROM TABLE_MANAGER,table_username Where table_username.username_id=TABLE_MANAGER.ID_MANAGER";
+
+    TableUsername usernameEdit;
     ObservableList<TableUsername> dataUsernames;
 
     @FXML
     void btnauAddUserAction(ActionEvent event) {
+    CountType();
 
         TableUsername username = new TableUsername();
         //   DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
@@ -233,7 +236,7 @@ public class ManageUsersController implements Initializable {
         String dpauBirthdateString = (dpauBirthdate.getValue() != null ? dpauBirthdate.getValue().toString() : "");
         String RankString = (cbauRank.getValue() != null ? cbauRank.getSelectionModel().getSelectedItem().toString() : "");
         String LevelString = (cbauLevel.getValue() != null ? cbauLevel.getSelectionModel().getSelectedItem().toString() : "");
-        String SexString = (checkFemaleORMale() != null ? checkFemaleORMale() : "");
+        String SexString = (aucheckFemaleORMale() != null ? aucheckFemaleORMale() : "");
         //  LocalDate localDate = dpauBirthdate.getValue();
 //        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
 
@@ -264,9 +267,14 @@ public class ManageUsersController implements Initializable {
                         username.setEmailAddress(EmailString);
                         username.setDataadded(dateNow);
                         username.setBirthdate(dateBirthdate);
+                        TableTeacher tableTeacher = new TableTeacher();
+                                                tableTeacher.setIdTeacher(username.getUsernameId());
+
+                        username.setTableTeacher(tableTeacher);
                         entityUsername.persist(username);
                         entityUsername.getTransaction().commit();
                         entityUsername.close();
+                       /*
                         EntityManager entityTeacher = emf.createEntityManager();
                         entityTeacher.getTransaction().begin();
                         TableTeacher tableTeacher = new TableTeacher();
@@ -275,7 +283,7 @@ public class ManageUsersController implements Initializable {
                         entityTeacher.persist(tableTeacher);
                         entityTeacher.getTransaction().commit();
                         entityTeacher.close();
-
+*/
                         break;
                     case "Student":
                         entityUsername = emf.createEntityManager();
@@ -290,9 +298,14 @@ public class ManageUsersController implements Initializable {
                         username.setEmailAddress(EmailString);
                         username.setDataadded(dateNow);
                         username.setBirthdate(dateBirthdate);
+                         TableStudent tableStudent = new TableStudent();
+                                                 tableStudent.setIdStudent(username.getUsernameId());
+
+                         username.setTableStudent(tableStudent);
                         entityUsername.persist(username);
                         entityUsername.getTransaction().commit();
                         entityUsername.close();
+                    /*  
                         EntityManager entityStudent = emf.createEntityManager();
                         entityStudent.getTransaction().begin();
                         TableStudent tableStudent = new TableStudent();
@@ -301,6 +314,7 @@ public class ManageUsersController implements Initializable {
                         entityStudent.persist(tableStudent);
                         entityStudent.getTransaction().commit();
                         entityStudent.close();
+                        */
                         break;
                     case "Administrator":
                         entityUsername = emf.createEntityManager();
@@ -315,60 +329,38 @@ public class ManageUsersController implements Initializable {
                         username.setEmailAddress(EmailString);
                         username.setDataadded(dateNow);
                         username.setBirthdate(dateBirthdate);
-
+//TableManager tableManager = new TableManager();
+//username.set
                         entityUsername.persist(username);
                         entityUsername.getTransaction().commit();
                         entityUsername.close();
                         EntityManager entityManager = emf.createEntityManager();
                         entityManager.getTransaction().begin();
+                       /*
                         TableManager tableManager = new TableManager();
                         tableManager.setIdManager(username.getUsernameId());
                         entityManager.persist(tableManager);
                         entityManager.getTransaction().commit();
                         entityManager.close();
-
+*/
                         break;
 
                 }
-                System.out.println("Entity saved.");
-                Connection c = null;
-                Statement stmt = null;
-                try {
-                    c = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
-                    c.setAutoCommit(false);
+                //       cbauRank.setItems(FXCollections.observableArrayList(usersRank));
+                //            cbauSkill.setItems(FXCollections.observableArrayList(usersSkill));
+                //  EntityManagerFactory emf = Persistence.createEntityManagerFactory("schoolMusicFxPU");
+                EntityManager entityManager = emf.createEntityManager();
+                TypedQuery<TableUsername> query = entityManager.createNamedQuery("TableUsername.findAll", TableUsername.class);
+                List<TableUsername> listUsernames = query.getResultList();
 
-                    System.out.println("Opened database successfully");
-                    stmt = c.createStatement();
-
-                    ResultSet rs = stmt.executeQuery(sMANAGER);
-                    rs.next();
-                    int count = rs.getInt("rowcount");
-                    System.out.println("MyTable has " + count + " row(s).");
-                    if (count >= 0) {
-                        System.out.println("Drawer has " + count + " row(s).");
-                        labelAdministrators.setText(String.valueOf(count));
-                    }
-
-                    rs = stmt.executeQuery(sSTUDENT);
-                    rs.next();
-                    count = rs.getInt("rowcount");
-                    System.out.println("MyTable has " + count + " row(s).");
-                    if (count >= 0) {
-                        System.out.println("DrawerStudent has " + count + " row(s).");
-                        labelRegisteredStudents.setText(String.valueOf(count));
-                    }
-                    rs = stmt.executeQuery(sTeacher);
-                    rs.next();
-                    count = rs.getInt("rowcount");
-                    if (count >= 0) {
-                        System.out.println("DrawerTeacher has " + count + " row(s).");
-                        labelRegisteredTeachers.setText(String.valueOf(count));
-
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(ManageUsersController.class.getName()).log(Level.SEVERE, null, ex);
+//List<TableUsername>listUsernames = entityManager.createQuery("TableUsername.findAll").getResultList();
+                dataUsernames = FXCollections.observableArrayList();
+                for (TableUsername row : listUsernames) {
+                    dataUsernames.add(new TableUsername(row.getUsernameId(), row.getUsername(), row.getPassword(), row.getSex(), row.getAdditionalInfo(), row.getEmailAddress(), row.getSsn(), row.getDataadded(), row.getFirstName(), row.getLastName(), row.getBirthdate(), row.getPhoneNumber(), row.getTableLevelInMusicalInstr(), row.getTableMessageCollection(), row.getTableMessageCollection1(), row.getTableStudent(), row.getTableTeacher()));
                 }
+                tvMainTable.setItems(dataUsernames);
 
+                System.out.println("Entity saved.");
             }
             clearFields();
 
@@ -393,8 +385,10 @@ public class ManageUsersController implements Initializable {
 //List<TableUsername>listUsernames = entityManager.createQuery("TableUsername.findAll").getResultList();
         dataUsernames = FXCollections.observableArrayList();
         for (TableUsername row : listUsernames) {
-            dataUsernames.add(new TableUsername(row.getUsernameId(),row.getUsername(),row.getPassword(),row.getSex(),row.getAdditionalInfo(),row.getEmailAddress(),row.getSsn(),row.getDataadded(),row.getFirstName(),row.getLastName(),row.getBirthdate(),row.getPhoneNumber(),row.getTableLevelInMusicalInstr(),row.getTableMessageCollection(),row.getTableMessageCollection1(),row.getTableStudent(),row.getTableTeacher()));
+            dataUsernames.add(new TableUsername(row.getUsernameId(), row.getUsername(), row.getPassword(), row.getSex(), row.getAdditionalInfo(), row.getEmailAddress(), row.getSsn(), row.getDataadded(), row.getFirstName(), row.getLastName(), row.getBirthdate(), row.getPhoneNumber(), row.getTableLevelInMusicalInstr(), row.getTableMessageCollection(), row.getTableMessageCollection1(), row.getTableStudent(), row.getTableTeacher()));
         }
+        tvMainTable.setItems(dataUsernames);
+
         //Query query = entityManager.createQuery("SELECT c FROM Country c");
         //List results = query.getResultList();
         iscbauRankComboBoxEmpty = cbauRank.getSelectionModel().isEmpty();
@@ -404,42 +398,8 @@ public class ManageUsersController implements Initializable {
         cbauRank.getSelectionModel().clearSelection();
         cbauSkill.getSelectionModel().clearSelection();
 
-        tvMainTable.setItems(dataUsernames);
         initColumns();
-        Connection c = null;
-        Statement stmt = null;
-        try {
-            c = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
-            c.setAutoCommit(false);
-
-            System.out.println("Opened database successfully");
-            stmt = c.createStatement();
-
-            ResultSet rs = stmt.executeQuery(sMANAGER);
-            rs.next();
-            int count = rs.getInt("rowcount");
-            System.out.println("MyTable has " + count + " row(s).");
-            if (count >= 0) {
-                System.out.println("Drawer has " + count + " row(s).");
-                labelAdministrators.setText(String.valueOf(count));
-            }
-
-            rs = stmt.executeQuery(sSTUDENT);
-            rs.next();
-            count = rs.getInt("rowcount");
-            System.out.println("MyTable has " + count + " row(s).");
-            if (count >= 0) {
-                System.out.println("DrawerStudent has " + count + " row(s).");
-                labelRegisteredStudents.setText(String.valueOf(count));
-            }
-            rs = stmt.executeQuery(sTeacher);
-            rs.next();
-            count = rs.getInt("rowcount");
-            if (count >= 0) {
-                System.out.println("DrawerTeacher has " + count + " row(s).");
-                labelRegisteredTeachers.setText(String.valueOf(count));
-
-            }
+        CountType();
 
             //filling the Combobox      
             List<String> list = new ArrayList<String>();
@@ -454,7 +414,9 @@ public class ManageUsersController implements Initializable {
             ObservableList obList = FXCollections.observableList(list);
             this.cbauLevel.getItems().clear();
             this.cbauLevel.setItems(obList);
+            this.cbeuLevel.getItems().clear();
             this.cbeuLevel.setItems(obList);
+
             List<String> listskill = new ArrayList<String>();
             listskill.add("Vocals");
             listskill.add("Piano");
@@ -471,15 +433,16 @@ public class ManageUsersController implements Initializable {
             listskill.add("Harp");
             ObservableList obListskill = FXCollections.observableList(listskill);
             this.cbauSkill.setItems(obListskill);
+            this.cbeuSkill.setItems(obListskill);
             List<String> listrank = new ArrayList<String>();
             listrank.add("Student");
             listrank.add("Teacher");
             listrank.add("Administrator");
             ObservableList obListrank = FXCollections.observableList(listrank);
             this.cbauRank.setItems(obListrank);
-        } catch (SQLException ex) {
-            Logger.getLogger(ManageUsersController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            this.cbeuRank.setItems(obListrank);
+
+     
     }
 
     private void clearFields() {
@@ -557,29 +520,28 @@ public class ManageUsersController implements Initializable {
 
     }
 
-     @FXML
+    @FXML
     void displaySelected(MouseEvent event) {
         int selectedIndex = tvMainTable.getSelectionModel().getSelectedIndex();
         System.out.println(selectedIndex);
-        if(selectedIndex>=0){
-        TableUsername username = (TableUsername) tvMainTable.getItems().get(selectedIndex);
-        if (username != null) {
+        if (selectedIndex >= 0) {
+            usernameEdit = (TableUsername) tvMainTable.getItems().get(selectedIndex);
+            if (usernameEdit != null) {
 
-            tfeuFirstName.setText(username.getFirstName());
-            tfeuLastName.setText(username.getLastName());
-            tfeuEmail.setText(username.getEmailAddress());
-            tfeuUserName.setText(username.getUsername());
-            tfeuPassoword.setText(username.getPassword());
-            taeuAdditionalInfo.setText(username.getAdditionalInfo());
-            tfeuPhoneNumber.setText(username.getPhoneNumber());
-            
+                tfeuFirstName.setText(usernameEdit.getFirstName());
+                tfeuLastName.setText(usernameEdit.getLastName());
+                tfeuEmail.setText(usernameEdit.getEmailAddress());
+                tfeuUserName.setText(usernameEdit.getUsername());
+                tfeuPassoword.setText(usernameEdit.getPassword());
+                taeuAdditionalInfo.setText(usernameEdit.getAdditionalInfo());
+                tfeuPhoneNumber.setText(usernameEdit.getPhoneNumber());
 
-     //       dpeuBirthdate.getEditor().setText(username.getBirthdate().toString());
-            tfeuPhoneNumber.setText(username.getPhoneNumber());
-        }
+                //       dpeuBirthdate.getEditor().setText(username.getBirthdate().toString());
+                tfeuPhoneNumber.setText(usernameEdit.getPhoneNumber());
+            }
         }
     }
-     
+
     public void initColumns() {
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<TableUsername, String>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<TableUsername, String>("lastName"));
@@ -602,7 +564,7 @@ public class ManageUsersController implements Initializable {
         }
 
     }*/
-    private String checkFemaleORMale() {
+    private String aucheckFemaleORMale() {
         if (this.checkboxauMale.isSelected()) {
             return "M";
         } else if (this.checkboxauFemale.isSelected()) {
@@ -611,5 +573,148 @@ public class ManageUsersController implements Initializable {
         return null;
 
     }
-    
+
+    private String eucheckFemaleORMale() {
+        if (this.checkboxauMale.isSelected()) {
+            return "M";
+        } else if (this.checkboxauFemale.isSelected()) {
+            return "F";
+        }
+        return null;
+
+    }
+
+    @FXML
+    void btneuSaveChangesAction(ActionEvent event) {
+        String dpauBirthdateString = (dpeuBirthdate.getValue() != null ? dpauBirthdate.getValue().toString() : "");
+        String RankString = (cbeuRank.getValue() != null ? cbeuRank.getSelectionModel().getSelectedItem().toString() : "");
+        String LevelString = (cbeuLevel.getValue() != null ? cbeuLevel.getSelectionModel().getSelectedItem().toString() : "");
+        String SexString = (eucheckFemaleORMale() != null ? eucheckFemaleORMale() : "");
+        usernameEdit.setFirstName(tfeuFirstName.getText());
+        usernameEdit.setLastName(tfeuLastName.getText());
+        usernameEdit.setAdditionalInfo(taeuAdditionalInfo.getText());
+        //     usernameEdit.setBirthdate(dpauBirthdateString);
+        //  usernameEdit.setDataadded();
+        usernameEdit.setSex(SexString);
+        usernameEdit.setPassword(tfauPassword.getText());
+        usernameEdit.setEmailAddress(tfeuEmail.getText());
+        usernameEdit.setPhoneNumber(tfeuPhoneNumber.getText());
+        usernameEdit.setUsername(tfeuUserName.getText());
+        if (updateUsername(usernameEdit, usernameEdit.getUsernameId())) {
+            new Alert(Alert.AlertType.CONFIRMATION, "User has been updated", ButtonType.CLOSE).show();
+            dataUsernames.set(tvMainTable.getSelectionModel().getFocusedIndex(), usernameEdit);
+            clearFields();
+        } else {
+            new Alert(Alert.AlertType.CONFIRMATION, "updating User was failed", ButtonType.CLOSE).show();
+
+        }
+    }
+
+    @FXML
+    void btneuDeleteUserAction(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure to delete " + usernameEdit.getFirstName() + " " + usernameEdit.getLastName(), ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> btnTypr = alert.showAndWait();
+        if (btnTypr.get() == ButtonType.YES) {
+            if (removeUsername(usernameEdit.getUsernameId())) {
+                new Alert(Alert.AlertType.CONFIRMATION, " User " + usernameEdit.getFirstName() + " " + usernameEdit.getLastName() + "has been deleted", ButtonType.CLOSE).show();
+                dataUsernames.remove(usernameEdit);
+                clearFields();
+            } else {
+                new Alert(Alert.AlertType.CONFIRMATION, "Deleting User was failed", ButtonType.CLOSE).show();
+
+            }
+        } else if (btnTypr.get() == ButtonType.NO) {
+            new Alert(Alert.AlertType.INFORMATION, "Deleting User canceled", ButtonType.CLOSE).show();
+
+        }
+    }
+
+    public boolean updateUsername(TableUsername tableUsername, BigDecimal usernameID) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("schoolMusicFxPU");
+        EntityManager entityUsername = emf.createEntityManager();
+
+        try {
+            entityUsername.getTransaction().begin();;
+            TableUsername un = entityUsername.find(TableUsername.class, usernameID);
+            un.setFirstName(tableUsername.getFirstName());
+            un.setLastName(tableUsername.getLastName());
+            un.setBirthdate(tableUsername.getBirthdate());
+            un.setSsn(tableUsername.getSsn());
+            un.setUsername(tableUsername.getUsername());
+            un.setPassword(tableUsername.getPassword());
+            un.setDataadded(tableUsername.getDataadded());
+            un.setEmailAddress(tableUsername.getEmailAddress());
+            un.setSex(tableUsername.getSex());
+            un.setPhoneNumber(tableUsername.getPhoneNumber());
+
+            entityUsername.merge(tableUsername);
+            entityUsername.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            return false;
+
+        }
+
+    }
+
+    public boolean removeUsername(BigDecimal usernameID) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("schoolMusicFxPU");
+        EntityManager entityUsername = emf.createEntityManager();
+
+        try {
+            entityUsername.getTransaction().begin();;
+            TableUsername un = entityUsername.find(TableUsername.class, usernameID);
+
+            entityUsername.remove(un);
+            entityUsername.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            return false;
+
+        }
+
+    }
+  private void CountType(){
+       String sTeacher = "Select count(*)AS rowcount FROM table_teacher,table_username Where table_username.username_id=table_teacher.id_teacher ";
+    String sSTUDENT = "Select count(*)AS rowcount FROM TABLE_STUDENT,table_username Where table_username.username_id=TABLE_STUDENT.ID_STUDENT";
+    String sMANAGER = "Select count(*)AS rowcount FROM TABLE_MANAGER,table_username Where table_username.username_id=TABLE_MANAGER.ID_MANAGER";
+                   Connection c = null;
+                Statement stmt = null;
+                try {
+                    c = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "hr");
+                    c.setAutoCommit(false);
+
+                    System.out.println("Opened database successfully");
+                    stmt = c.createStatement();
+
+                    ResultSet rs = stmt.executeQuery(sMANAGER);
+                    rs.next();
+                    int count = rs.getInt("rowcount");
+                    System.out.println("MyTable has " + count + " row(s).");
+                    if (count >= 0) {
+                        System.out.println("Drawer has " + count + " row(s).");
+                        labelAdministrators.setText(String.valueOf(count));
+                    }
+
+                    rs = stmt.executeQuery(sSTUDENT);
+                    rs.next();
+                    count = rs.getInt("rowcount");
+                    System.out.println("MyTable has " + count + " row(s).");
+                    if (count >= 0) {
+                        System.out.println("DrawerStudent has " + count + " row(s).");
+                        labelRegisteredStudents.setText(String.valueOf(count));
+                    }
+                    rs = stmt.executeQuery(sTeacher);
+                    rs.next();
+                    count = rs.getInt("rowcount");
+                    if (count >= 0) {
+                        System.out.println("DrawerTeacher has " + count + " row(s).");
+                        labelRegisteredTeachers.setText(String.valueOf(count));
+
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(ManageUsersController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+    }
 }

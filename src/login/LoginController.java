@@ -27,6 +27,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,6 +49,7 @@ import schoolmusic.HomeViewController;
 import schoolmusic.SchoolMusic;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.EventHandler;
 
 
 /**
@@ -67,8 +69,19 @@ public class LoginController implements Initializable {
     private JFXPasswordField txtPassword;
     @FXML
     private JFXButton btnQuickAccessTools;
-     @FXML
-    private Label  invalid_label;
+     private EventHandler<ActionEvent> event;
+
+     private FadeTransition fadeIn = new FadeTransition(
+    Duration.millis(1000)
+);
+        private FadeTransition fadeOut = new FadeTransition(
+    Duration.millis(2000)
+);
+        PauseTransition visiblePause = new PauseTransition(
+        Duration.seconds(3)
+);
+        @FXML
+        private Label labelWarning;
     @FXML
     private Hyperlink forgotpw;
     private Connection conn = null;
@@ -93,6 +106,19 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         loggingProgress.setVisible(false);
+        labelWarning.setVisible(false);
+        
+    fadeIn.setNode(labelWarning);
+    fadeIn.setFromValue(0.0);
+    fadeIn.setToValue(1.0);
+    fadeIn.setCycleCount(1);
+    fadeIn.setAutoReverse(true);
+    fadeOut.setNode(labelWarning);
+    fadeOut.setFromValue(1.0);
+    fadeOut.setToValue(0.0);
+    fadeOut.setCycleCount(1);
+    fadeOut.setAutoReverse(true);
+
 
     }
        /**
@@ -102,16 +128,14 @@ public class LoginController implements Initializable {
      * @param lastName
      */
 
+    
 @FXML
     private void loginAction(ActionEvent event) throws IOException {
-        loggingProgress.setVisible(true);
-        PauseTransition pauseTransition = new PauseTransition();
-        pauseTransition.setDuration(Duration.seconds(5));
-        pauseTransition.setOnFinished(ev -> {
+        labelWarning.setVisible(false);
+        
+       
             try {
-                System.out.println("Complete one");
-                // completeLogin();
-                System.out.println("DO IT");
+                
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(Routes.MAINVIEW));
                 Parent root =(Parent)loader.load();
                 Stage stage = new Stage();
@@ -122,32 +146,40 @@ public class LoginController implements Initializable {
                 stage.setScene(scene);
                 
                 if (isValidCredentials())
-                {    
-                  //  Username tableUsername = new Username ();
-                       HomeViewController homeViewController =  (HomeViewController)loader.getController();
+                {    loggingProgress.setVisible(true);
+        PauseTransition pauseTransition = new PauseTransition();
+        pauseTransition.setDuration(Duration.seconds(5));
+        pauseTransition.setOnFinished(ev->{
+                    
+                    HomeViewController homeViewController =  (HomeViewController)loader.getController();
                      homeViewController.GetData(txtUsername.getText(), txtPassword.getText());
                
                     stage.hide(); //optional
                     stage.setScene(scene);
                     stage.show();  
                                     btnLogin.getScene().getWindow().hide();
+                });
+                  //  Username tableUsername = new Username ();
+                       pauseTransition.play();
 
                 }
                 else
                 {
                     txtUsername.clear();
                     txtPassword.clear();
-                  invalid_label.setText("Incorrect Password and Username !");
+                labelWarning.setVisible(true);    
+                fadeIn.play();                 
+                fadeOut.play();
                 }
-                System.out.println("Complete two");
+             
             } catch (IOException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
-        pauseTransition.play();
-   invalid_label.setText("");
+        
+            
+       
       
-    }
+}
         @FXML
     void forgotpw(ActionEvent event) {
         try {

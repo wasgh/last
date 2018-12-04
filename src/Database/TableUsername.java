@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "TableUsername.findByEmailAddress", query = "SELECT t FROM TableUsername t WHERE t.emailAddress = :emailAddress")
     , @NamedQuery(name = "TableUsername.findBySsn", query = "SELECT t FROM TableUsername t WHERE t.ssn = :ssn")
     , @NamedQuery(name = "TableUsername.findByDataadded", query = "SELECT t FROM TableUsername t WHERE t.dataadded = :dataadded")
-    , @NamedQuery(name = "TableUsername.findByFirstName", query = "SELECT t FROM TableUsername t WHERE t.firstName = :firstName")
+    , @NamedQuery(name = "TableUseername.findByFirstName", query = "SELECT t FROM TableUsername t WHERE t.firstName = :firstName")
     , @NamedQuery(name = "TableUsername.findByLastName", query = "SELECT t FROM TableUsername t WHERE t.lastName = :lastName")
     , @NamedQuery(name = "TableUsername.findByBirthdate", query = "SELECT t FROM TableUsername t WHERE t.birthdate = :birthdate")
     , @NamedQuery(name = "TableUsername.findByPhoneNumber", query = "SELECT t FROM TableUsername t WHERE t.phoneNumber = :phoneNumber")})
