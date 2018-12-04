@@ -6,6 +6,7 @@
 package schoolmusic;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,6 +14,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import models.User;
 
 /**
@@ -35,6 +39,8 @@ public class WelcomeController implements Initializable {
     private JFXButton btnLogOut;
     @FXML
     private TextField txtLoggedUser;
+    @FXML
+    private MediaPlayer player;
 
     /**
      * Initializes the controller class.
@@ -50,5 +56,31 @@ public class WelcomeController implements Initializable {
     @FXML
     private void logOut(ActionEvent event) {
     }
+    
+    
+    
+    @FXML
+    void PlayNote(MouseEvent  event) {
+
+        JFXButton note;
+        note = (JFXButton) event.getSource();
+    
+    String uriString;
+   uriString = new File("D:\\WorkSpace\\NetBeansProjects\\musicschool\\src\\sounds\\piano\\"+note.getAccessibleText()+".mp3").toURI().toString();
+    //uriString = new File("\\"+note.getAccessibleText()+".mp3").toURI().toString();
+    player = new MediaPlayer( new Media(uriString));
+    player.play();
+     
+        
+  
+        
+        
+        
+    }
+       @FXML
+    void StopNote(MouseEvent event) {
+        ;
+    }
+
     
 }
